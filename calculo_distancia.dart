@@ -64,6 +64,7 @@ void main() {
       lojas.add(Rotas(coordenadaX: 18, coordenadaY: 56, distancia: 0));
       lojas.add(Rotas(coordenadaX: 99, coordenadaY: 2, distancia: 0));
 
+      // Act
       try {
         calculaDistancia(cliente: cliente, lojas: lojas);
       } on AssertionError {
@@ -84,6 +85,7 @@ void main() {
       lojas.add(Rotas(coordenadaX: null, coordenadaY: 56, distancia: 0));
       lojas.add(Rotas(coordenadaX: 99, coordenadaY: 2, distancia: 0));
 
+      //Act
       try {
         calculaDistancia(cliente: cliente, lojas: lojas);
       } on AssertionError {
