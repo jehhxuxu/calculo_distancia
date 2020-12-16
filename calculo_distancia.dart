@@ -6,6 +6,9 @@ class Rotas {
   double distancia;
 
   Rotas({this.coordenadaX, this.coordenadaY, this.distancia});
+
+  @override
+  String toString() => 'Rotas($coordenadaX, $coordenadaY)';
 }
 
 void main() {
@@ -26,11 +29,7 @@ void main() {
     lojas[i].distancia = math.sqrt(elevateX + elevateY);
     print(lojas[i].distancia);
   }
-  lojas.sort((a, b) => a.distancia.compareTo(b.distancia));
 
-  var listaOrdenada = List<String>();
-  lojas.forEach((element) {
-    listaOrdenada.add('[${element.coordenadaX},${element.coordenadaY}]');
-  });
-  print(listaOrdenada);
+  lojas.sort((a, b) => a.distancia.compareTo(b.distancia));
+  print(lojas.toString());
 }
