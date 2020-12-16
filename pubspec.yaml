@@ -1,0 +1,8 @@
+name: calculo_distancia
+description: calculo_distancia
+
+
+environment:
+  sdk: ">=2.9.0 <3.0.0"
+dev_dependencies:
+  test: ^1.15.7
