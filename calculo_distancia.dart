@@ -33,61 +33,65 @@ void ordenaLista(List<Rotas> lojas) {
 }
 
 void main() {
-  test('teste da centauro', () {
-    // Arrange
-    Rotas cliente;
-    List<Rotas> lojas = List<Rotas>();
+  group('Caminho feliz', () {
+    test('teste da centauro', () {
+      // Arrange
+      Rotas cliente;
+      List<Rotas> lojas = List<Rotas>();
 
-    cliente = Rotas(coordenadaX: 20, coordenadaY: 32, distancia: 0);
-    lojas.add(Rotas(coordenadaX: 40, coordenadaY: 88, distancia: 0));
-    lojas.add(Rotas(coordenadaX: 18, coordenadaY: 56, distancia: 0));
-    lojas.add(Rotas(coordenadaX: 99, coordenadaY: 2, distancia: 0));
+      cliente = Rotas(coordenadaX: 20, coordenadaY: 32, distancia: 0);
+      lojas.add(Rotas(coordenadaX: 40, coordenadaY: 88, distancia: 0));
+      lojas.add(Rotas(coordenadaX: 18, coordenadaY: 56, distancia: 0));
+      lojas.add(Rotas(coordenadaX: 99, coordenadaY: 2, distancia: 0));
 
-    // Act
-    calculaDistancia(cliente: cliente, lojas: lojas);
-    ordenaLista(lojas);
+      // Act
+      calculaDistancia(cliente: cliente, lojas: lojas);
+      ordenaLista(lojas);
 
-    // Assert
-    expect(lojas.toString(), '[[18,56], [40,88], [99,2]]');
+      // Assert
+      expect(lojas.toString(), '[[18,56], [40,88], [99,2]]');
+    });
   });
 
-  test('teste cliente com coordenada null', () {
-    // Arrange
-    Rotas cliente;
-    List<Rotas> lojas = List<Rotas>();
-    bool assertionError = false;
-    cliente = Rotas(coordenadaX: null, coordenadaY: 32, distancia: 0);
-    lojas.add(Rotas(coordenadaX: 40, coordenadaY: 88, distancia: 0));
-    lojas.add(Rotas(coordenadaX: 18, coordenadaY: 56, distancia: 0));
-    lojas.add(Rotas(coordenadaX: 99, coordenadaY: 2, distancia: 0));
+  group('Caminho nao tao feliz', () {
+    test('teste cliente com coordenada null', () {
+      // Arrange
+      Rotas cliente;
+      List<Rotas> lojas = List<Rotas>();
+      bool assertionError = false;
+      cliente = Rotas(coordenadaX: null, coordenadaY: 32, distancia: 0);
+      lojas.add(Rotas(coordenadaX: 40, coordenadaY: 88, distancia: 0));
+      lojas.add(Rotas(coordenadaX: 18, coordenadaY: 56, distancia: 0));
+      lojas.add(Rotas(coordenadaX: 99, coordenadaY: 2, distancia: 0));
 
-    try {
-      calculaDistancia(cliente: cliente, lojas: lojas);
-    } on AssertionError {
-      assertionError = true;
-    }
+      try {
+        calculaDistancia(cliente: cliente, lojas: lojas);
+      } on AssertionError {
+        assertionError = true;
+      }
 
-    // Assert
-    expect(assertionError, true);
-  });
+      // Assert
+      expect(assertionError, true);
+    });
 
-  test('teste loja com coordenada null', () {
-    // Arrange
-    Rotas cliente;
-    List<Rotas> lojas = List<Rotas>();
-    bool assertionError = false;
-    cliente = Rotas(coordenadaX: 20, coordenadaY: 32, distancia: 0);
-    lojas.add(Rotas(coordenadaX: 40, coordenadaY: 88, distancia: 0));
-    lojas.add(Rotas(coordenadaX: null, coordenadaY: 56, distancia: 0));
-    lojas.add(Rotas(coordenadaX: 99, coordenadaY: 2, distancia: 0));
+    test('teste loja com coordenada null', () {
+      // Arrange
+      Rotas cliente;
+      List<Rotas> lojas = List<Rotas>();
+      bool assertionError = false;
+      cliente = Rotas(coordenadaX: 20, coordenadaY: 32, distancia: 0);
+      lojas.add(Rotas(coordenadaX: 40, coordenadaY: 88, distancia: 0));
+      lojas.add(Rotas(coordenadaX: null, coordenadaY: 56, distancia: 0));
+      lojas.add(Rotas(coordenadaX: 99, coordenadaY: 2, distancia: 0));
 
-    try {
-      calculaDistancia(cliente: cliente, lojas: lojas);
-    } on AssertionError {
-      assertionError = true;
-    }
+      try {
+        calculaDistancia(cliente: cliente, lojas: lojas);
+      } on AssertionError {
+        assertionError = true;
+      }
 
-    // Assert
-    expect(assertionError, true);
+      // Assert
+      expect(assertionError, true);
+    });
   });
 }
